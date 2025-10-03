@@ -26,6 +26,7 @@ function login() {
 
 function protected() {
   token = localStorage.getItem("jwt")
+  statusLabel = document.getElementById("statusLabel");
   fetch("/meme", {
     method: "GET",
     headers: {
@@ -33,13 +34,16 @@ function protected() {
       "Content-type": "application/json"
     }
   })
-  .then(response => {
-    if (!response.ok){
-      throw new Error("Ошибка доступа: " + response.status)
-    }
-    return response.json();
-  })
+  .then(response => response.json())
   .then(data => {
-    document.body.innerHTML = data.html;
+    if (data.status === "ok") {
+      document.body.innerHTML = data.html;
+    } else {
+      statusLabel.textContent = data.msg;
+    }
   })
+  .catch(err => {
+    console.error(err);
+    statusLabel.textContent = "Ошибка соединения с сервером";
+  });
 }

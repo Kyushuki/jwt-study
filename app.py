@@ -1,12 +1,28 @@
 from flask import Flask, render_template, request, jsonify
-import jwt_task
-import jwt
-
-LOGIN = "admin"
-PASS = "pass"
 
 
 app = Flask(__name__, template_folder="templates")
+
+
+SECRET_KEY = "helloMyFriendo"
+ALGORITHM = "HS256"
+
+# TODO: В качестве username укажите фамилию
+username = "a"
+password = "a"
+
+
+def jwt_encode(username):
+    """
+    Функция для создания токена
+
+    Её вам и нужно реализовать
+
+    Возвращать она должна токен
+    """
+
+    # TODO: сделать начинку, сгенерировать и вернуть токен
+    return
 
 
 @app.route("/")
@@ -24,12 +40,14 @@ def standart():
 @app.route("/login", methods=['POST'])
 def login():
     # Вход
+    # Здесь ничего не менять
+    # Ну если сильно хочется то можете конечно, но как сами знаете
     data = request.get_json()
     user_name = data.get("username")
     user_password = data.get("password")
 
-    if user_name == LOGIN and user_password == PASS:
-        token = jwt_task.jwt_encode(user_name)
+    if user_name == username and user_password == password:
+        token = jwt_encode(user_name)
 
         return jsonify({"status": "ok", "token": token})
 
@@ -39,19 +57,13 @@ def login():
 @app.route("/meme", methods=["GET"])
 def protected_page():
     # Страничка доступ к которой имеется только если токен валиден и не истёк
-    auth_header = request.headers.get("Authorization")
-    if not auth_header:
-        return jsonify({"error": "Token missing"}), 401
-    try:
-        token = auth_header.split(" ")[1]
-        jwt_task.jwt_decode(token)
-        html = render_template("meme.html")
-        return jsonify({"status": "ok", "html": html}), 200
+    # TODO: Реализуйте доступ к страничке с помощью токена (т.е. декодируйте его и примените остальную магию)
+    # TODO 2: Пусть доступ закрывается по истичению срока жизни токена
+    # TODO 3: Пусть доступ закрывается если нет прав( нужной роли )
+    # В качестве ответа клиенту посылать jsonify({"status": "Нужный статус", "msg": "соответствующее сообщение"})
 
-    except jwt.ExpiredSignatureError:
-        return jsonify({"error": "Token expired"}), 401
-    except jwt.InvalidTokenError:
-        return jsonify({"error": "Invalid token"}), 401
+    html = render_template("meme.html")
+    return jsonify({"status": "ok", "html": html}), 200
 
 
 app.run(port=8080, debug=True)
