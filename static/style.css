@@ -1,14 +1,101 @@
-html {
-    font-family: arial;
-    font-size: 16px;
-    background-color: #51517b;
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  color: #333;
 }
+
+h1 {
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
 form {
-    background-color: #7b7b90;
+  background: white;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  width: 320px;
+  margin-bottom: 30px;
 }
+
 fieldset {
-    border: none;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.9em;
+  color: #444;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: #4facfe;
+  outline: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  background: #4facfe;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #00c6ff;
+}
+
+#loginError {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: red;
+  text-align: center;
+}
+
+p {
+  max-width: 600px;
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+p + button {
+  margin-top: 15px;
 }

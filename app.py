@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, jsonify
 import jwt_task
 import jwt
 
+LOGIN = "admin"
+PASS = "pass"
+
 
 app = Flask(__name__, template_folder="templates")
 
@@ -25,7 +28,7 @@ def login():
     user_name = data.get("username")
     user_password = data.get("password")
 
-    if user_name == "admin" and user_password == "adminpass":
+    if user_name == LOGIN and user_password == PASS:
         token = jwt_task.jwt_encode(user_name)
 
         return jsonify({"status": "ok", "token": token})
