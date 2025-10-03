@@ -8,7 +8,7 @@ SECRET_KEY = ""
 ALGORITHM = "HS256"
 
 # TODO: В качестве username укажите фамилию
-login = "a"
+uLogin = "a"
 password = "a"
 
 
@@ -61,8 +61,8 @@ def login():
     data = request.get_json()
     user_name = data.get("username")
     user_password = data.get("password")
-
-    if user_name == login and user_password == password:
+    global login, password
+    if user_name == uLogin and user_password == password:
         token = encoding(user_name)
 
         return jsonify({"status": "ok", "token": token})

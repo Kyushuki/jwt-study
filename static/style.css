@@ -108,3 +108,23 @@ p {
 p + button {
   margin-top: 15px;
 }
+
+.image-container {
+    width: 300px;        /* ширина родителя */
+    height: 200px;       /* высота родителя */
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;    /* обрезает лишнее */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+}
+
+.image-container img {
+    width: 100%;         /* масштабируем по ширине родителя */
+    height: 100%;        /* масштабируем по высоте родителя */
+    object-fit: contain; /* уменьшаем картинку, полностью помещаем в контейнер */
+    display: block; 
+    transform: scale(0.25);
+}
