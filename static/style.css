@@ -1,0 +1,14 @@
+html {
+    font-family: arial;
+    font-size: 16px;
+    background-color: #51517b;
+}
+form {
+    background-color: #7b7b90;
+}
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}

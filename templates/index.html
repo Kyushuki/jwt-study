@@ -1,5 +1,22 @@
-<!DOCTYPE 5 html>
+<!DOCTYPE html>
 <html>
-    <h1>Hello, <i>WORLD</i></h1>
+    <head>
+        <meta charset="UTF-8">
+        <title>JWT-study</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </head>
+    <body>
+        <h1>JWT-study</h1>
+        <form onsubmit="login(); return false;">
+            <fieldset>
+                <legend>Log in:</legend>
+                <label id="loginError"></label>
+                <label for="username">Username:<input id="username" placeholder="login" type="text" required></label>
+                <label for="password">Password:<input id="password" placeholder="password" type="password" required>
+            </fieldset>
+            <button type="submit">Log in</button>
+        </form>
+    </body>
 </html>
 
